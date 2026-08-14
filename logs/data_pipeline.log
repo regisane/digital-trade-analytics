@@ -1,0 +1,7 @@
+2026-08-13 16:37:57.682 | INFO     | __main__:__init__:33 - Transformer initialized! Input: /home/uwimena/Documents/digital_trade_analytics/data/raw/unctad_digital_trade.csv, Output: /home/uwimena/Documents/digital_trade_analytics/data/processed
+2026-08-13 16:37:57.682 | INFO     | __main__:run_pipeline:142 - ============================================================
+2026-08-13 16:37:57.683 | INFO     | __main__:run_pipeline:143 - STARTING DATA PROCESSING PIPELINE
+2026-08-13 16:37:57.683 | INFO     | __main__:run_pipeline:144 - ============================================================
+2026-08-13 16:37:57.684 | INFO     | __main__:load_data:36 - Loading raw data...
+2026-08-13 16:37:57.685 | ERROR    | __main__:load_data:53 - File not found: /home/uwimena/Documents/digital_trade_analytics/data/raw/unctad_digital_trade.csv
+2026-08-13 16:37:57.686 | ERROR    | __main__:run_pipeline:162 - Pipeline failed: [Errno 2] No such file or directory: '/home/uwimena/Documents/digital_trade_analytics/data/raw/unctad_digital_trade.csv'
