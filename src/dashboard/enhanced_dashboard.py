@@ -30,105 +30,100 @@ st.set_page_config(
 st.markdown("""
 <style>
     .main-header {
-        font-size: 2.5rem;
-        font-weight: bold;
+        font-size: 3rem;
+        font-weight: 900;
         color: #1f77b4;
         text-align: center;
-        padding: 1rem;
+        padding: 2rem 1rem;
+        background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+        border-radius: 10px;
+        margin-bottom: 1rem;
     }
     
     .metric-card {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        border-radius: 15px;
-        padding: 1.8rem 1.2rem;
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 2rem 1.5rem;
         margin: 0.5rem;
         text-align: center;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 4px 12px rgba(31, 119, 180, 0.12);
+        border: 2px solid #e8f0f8;
         transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 280px;
     }
     
     .metric-card:hover {
         transform: translateY(-5px);
-        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-    }
-    
-    .metric-card-exports {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    }
-    
-    .metric-card-imports {
-        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-    }
-    
-    .metric-card-balance {
-        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-    }
-    
-    .metric-card-countries {
-        background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-    }
-    
-    .metric-card-latest {
-        background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        box-shadow: 0 8px 20px rgba(31, 119, 180, 0.2);
+        border-color: #1f77b4;
     }
     
     .metric-icon {
-        font-size: 2.5rem;
-        margin-bottom: 0.5rem;
+        font-size: 3rem;
+        margin-bottom: 0.8rem;
     }
     
     .metric-value {
-        font-size: 2.8rem;
+        font-size: 2.6rem;
         font-weight: 900;
-        color: #ffffff;
-        margin: 0.5rem 0;
+        color: #1f77b4;
+        margin: 0.7rem 0;
         letter-spacing: -1px;
     }
     
     .metric-label {
-        font-size: 1rem;
-        color: rgba(255, 255, 255, 0.95);
-        font-weight: 600;
-        margin-top: 0.5rem;
+        font-size: 1.1rem;
+        color: #333333;
+        font-weight: 700;
+        margin-top: 0.3rem;
     }
     
     .metric-subtitle {
-        font-size: 0.75rem;
-        color: rgba(255, 255, 255, 0.8);
+        font-size: 0.8rem;
+        color: #666666;
         margin-top: 0.3rem;
+        font-weight: 500;
     }
     
     .metric-trend {
         font-size: 0.85rem;
-        margin-top: 0.7rem;
-        padding: 0.4rem 0.8rem;
+        margin-top: 1rem;
+        padding: 0.6rem 0.8rem;
         border-radius: 8px;
-        background: rgba(255, 255, 255, 0.2);
-        color: rgba(255, 255, 255, 0.95);
+        background: #e8f0f8;
+        color: #1f77b4;
         font-weight: 600;
     }
     
     .trend-positive {
-        background: rgba(76, 175, 80, 0.3);
+        background: #d4edda;
+        color: #155724;
     }
     
     .trend-negative {
-        background: rgba(244, 67, 54, 0.3);
+        background: #f8d7da;
+        color: #721c24;
     }
     
     .kpi-section-title {
-        font-size: 1.5rem;
-        font-weight: 700;
+        font-size: 1.8rem;
+        font-weight: 800;
         color: #1f77b4;
-        margin-bottom: 1.5rem;
+        margin-bottom: 2rem;
+        margin-top: 1rem;
         text-transform: uppercase;
-        letter-spacing: 1px;
+        letter-spacing: 2px;
+        border-bottom: 3px solid #1f77b4;
+        padding-bottom: 1rem;
+        display: inline-block;
     }
 </style>
 """, unsafe_allow_html=True)
 
-st.markdown('<div class="main-header">🌍 Digital Trade Intelligence Platform</div>', unsafe_allow_html=True)
+st.markdown('<h1 class="main-header">🌍 Digital Trade Intelligence Platform</h1>', unsafe_allow_html=True)
 st.markdown("---")
 
 # ============================================
@@ -236,17 +231,19 @@ def calculate_trend(data, column):
         return 0
     return ((latest - previous) / abs(previous)) * 100
 
-col1, col2, col3, col4, col5 = st.columns(5)
+col1, col2, col3, col4, col5 = st.columns(5, gap="medium")
 
 with col1:
     total_exports = data_filtered['exports_millions'].sum()
     trend_exports = calculate_trend(data_filtered.sort_values('TIME_PERIOD'), 'exports_millions')
     trend_icon_exp = "📈" if trend_exports >= 0 else "📉"
     st.markdown(f"""
-    <div class="metric-card metric-card-exports">
+    <div class="metric-card">
         <div class="metric-icon">💰</div>
-        <div class="metric-value">${total_exports/1000:,.1f}B</div>
-        <div class="metric-label">Total Exports</div>
+        <div>
+            <div class="metric-value">${total_exports/1000:,.1f}B</div>
+            <div class="metric-label">Total Exports</div>
+        </div>
         <div class="metric-trend trend-{'positive' if trend_exports >= 0 else 'negative'}">
             {trend_icon_exp} {abs(trend_exports):.1f}% vs Last Period
         </div>
@@ -258,10 +255,12 @@ with col2:
     trend_imports = calculate_trend(data_filtered.sort_values('TIME_PERIOD'), 'imports_millions')
     trend_icon_imp = "📈" if trend_imports >= 0 else "📉"
     st.markdown(f"""
-    <div class="metric-card metric-card-imports">
+    <div class="metric-card">
         <div class="metric-icon">💳</div>
-        <div class="metric-value">${total_imports/1000:,.1f}B</div>
-        <div class="metric-label">Total Imports</div>
+        <div>
+            <div class="metric-value">${total_imports/1000:,.1f}B</div>
+            <div class="metric-label">Total Imports</div>
+        </div>
         <div class="metric-trend trend-{'positive' if trend_imports >= 0 else 'negative'}">
             {trend_icon_imp} {abs(trend_imports):.1f}% vs Last Period
         </div>
@@ -273,10 +272,12 @@ with col3:
     is_positive = trade_balance > 0
     balance_icon = "✅" if is_positive else "⚠️"
     st.markdown(f"""
-    <div class="metric-card metric-card-balance">
+    <div class="metric-card">
         <div class="metric-icon">⚖️</div>
-        <div class="metric-value" style="color:#ffffff">${trade_balance:,.1f}B</div>
-        <div class="metric-label">Trade Balance</div>
+        <div>
+            <div class="metric-value">${trade_balance:,.1f}B</div>
+            <div class="metric-label">Trade Balance</div>
+        </div>
         <div class="metric-trend trend-{'positive' if is_positive else 'negative'}">
             {balance_icon} {'Surplus' if is_positive else 'Deficit'}
         </div>
@@ -287,11 +288,13 @@ with col4:
     countries_count = data_filtered['REF_AREA'].nunique()
     total_countries = time_series['REF_AREA'].nunique()
     st.markdown(f"""
-    <div class="metric-card metric-card-countries">
+    <div class="metric-card">
         <div class="metric-icon">🌍</div>
-        <div class="metric-value">{countries_count}</div>
-        <div class="metric-label">Countries</div>
-        <div class="metric-subtitle">of {total_countries} Total</div>
+        <div>
+            <div class="metric-value">{countries_count}</div>
+            <div class="metric-label">Countries</div>
+            <div class="metric-subtitle">of {total_countries} Total</div>
+        </div>
     </div>
     """, unsafe_allow_html=True)
 
@@ -301,21 +304,25 @@ with col5:
         latest_exports = latest_value['exports_millions'].iloc[0] if not latest_value.empty else 0
         latest_year = data_filtered['TIME_PERIOD'].max() if not data_filtered.empty else 0
         st.markdown(f"""
-        <div class="metric-card metric-card-latest">
+        <div class="metric-card">
             <div class="metric-icon">📅</div>
-            <div class="metric-value">${latest_exports/1000:,.1f}B</div>
-            <div class="metric-label">Latest Year</div>
-            <div class="metric-subtitle">{int(latest_year)}</div>
+            <div>
+                <div class="metric-value">${latest_exports/1000:,.1f}B</div>
+                <div class="metric-label">Latest Year</div>
+                <div class="metric-subtitle">{int(latest_year)}</div>
+            </div>
         </div>
         """, unsafe_allow_html=True)
     else:
         forecast_years = len(forecast) if forecast is not None else 0
         st.markdown(f"""
-        <div class="metric-card metric-card-latest">
+        <div class="metric-card">
             <div class="metric-icon">🔮</div>
-            <div class="metric-value">{forecast_years}</div>
-            <div class="metric-label">Forecast Years</div>
-            <div class="metric-subtitle">Projected</div>
+            <div>
+                <div class="metric-value">{forecast_years}</div>
+                <div class="metric-label">Forecast Years</div>
+                <div class="metric-subtitle">Projected</div>
+            </div>
         </div>
         """, unsafe_allow_html=True)
 
