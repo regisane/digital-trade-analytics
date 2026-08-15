@@ -8,6 +8,8 @@
 [![SQLite](https://img.shields.io/badge/SQLite-3.0+-green.svg)](https://sqlite.org)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.28+-red.svg)](https://streamlit.io)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+<img width="1356" height="643" alt="image" src="https://github.com/user-attachments/assets/9e4eec3d-fda7-455d-82a5-6cbe6592c695" />
+
 
 ---
 
