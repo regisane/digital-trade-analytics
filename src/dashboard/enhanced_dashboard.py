@@ -30,94 +30,99 @@ st.set_page_config(
 st.markdown("""
 <style>
     .main-header {
-        font-size: 3rem;
-        font-weight: 900;
-        color: #1f77b4;
-        text-align: center;
-        padding: 2rem 1rem;
-        background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
-        border-radius: 10px;
-        margin-bottom: 1rem;
+        font-size: 2.2rem;
+        font-weight: 800;
+        color: #1d3557;
+        text-align: left;
+        padding: 0.25rem 0;
+        background: transparent;
+        border-radius: 0;
+        margin: 0 0 0.75rem 0;
     }
     
     .metric-card {
-        background: #ffffff;
+        background: linear-gradient(180deg, #f2f5f8 0%, #edf3f8 100%);
         border-radius: 12px;
-        padding: 2rem 1.5rem;
-        margin: 0.5rem;
+        padding: 1.2rem 1rem 1rem;
+        margin: 0.35rem 0.2rem;
         text-align: center;
-        box-shadow: 0 4px 12px rgba(31, 119, 180, 0.12);
-        border: 2px solid #e8f0f8;
-        transition: all 0.3s ease;
+        box-shadow: 0 4px 10px rgba(31, 54, 74, 0.08);
+        border: 1px solid #dfe8ef;
+        transition: all 0.2s ease;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
-        min-height: 280px;
+        justify-content: center;
+        align-items: center;
+        min-height: 150px;
+        gap: 0.45rem;
     }
     
     .metric-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 20px rgba(31, 119, 180, 0.2);
-        border-color: #1f77b4;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 18px rgba(31, 54, 74, 0.12);
+        border-color: #bfd5e7;
     }
     
     .metric-icon {
-        font-size: 3rem;
-        margin-bottom: 0.8rem;
+        font-size: 2rem;
+        line-height: 1;
+        margin-bottom: 0.15rem;
     }
     
     .metric-value {
-        font-size: 2.6rem;
-        font-weight: 900;
+        font-size: 2.1rem;
+        font-weight: 800;
         color: #1f77b4;
-        margin: 0.7rem 0;
-        letter-spacing: -1px;
+        line-height: 1.1;
+        margin: 0;
+        letter-spacing: -0.03em;
     }
     
     .metric-label {
-        font-size: 1.1rem;
-        color: #333333;
+        font-size: 1rem;
+        color: #4b5563;
         font-weight: 700;
-        margin-top: 0.3rem;
+        margin-top: 0.15rem;
     }
     
     .metric-subtitle {
         font-size: 0.8rem;
-        color: #666666;
-        margin-top: 0.3rem;
+        color: #6b7280;
+        margin-top: 0.05rem;
         font-weight: 500;
     }
     
     .metric-trend {
-        font-size: 0.85rem;
-        margin-top: 1rem;
-        padding: 0.6rem 0.8rem;
+        font-size: 0.8rem;
+        margin-top: 0.4rem;
+        padding: 0.45rem 0.7rem;
         border-radius: 8px;
         background: #e8f0f8;
         color: #1f77b4;
         font-weight: 600;
+        width: 100%;
+        box-sizing: border-box;
     }
     
     .trend-positive {
-        background: #d4edda;
-        color: #155724;
+        background: #dff5e6;
+        color: #1d7a46;
     }
     
     .trend-negative {
-        background: #f8d7da;
-        color: #721c24;
+        background: #fbe7e9;
+        color: #b42318;
     }
     
     .kpi-section-title {
-        font-size: 1.8rem;
+        font-size: 1.7rem;
         font-weight: 800;
-        color: #1f77b4;
-        margin-bottom: 2rem;
-        margin-top: 1rem;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        border-bottom: 3px solid #1f77b4;
-        padding-bottom: 1rem;
+        color: #243b53;
+        margin-bottom: 1.25rem;
+        margin-top: 0.75rem;
+        letter-spacing: 0;
+        border-bottom: 1px solid #d9e2ec;
+        padding-bottom: 0.7rem;
         display: inline-block;
     }
 </style>
